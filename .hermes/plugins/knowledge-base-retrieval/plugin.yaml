@@ -1,0 +1,10 @@
+name: knowledge-base-retrieval
+version: "0.1.0"
+description: "Expose the operator's private Knowledge Base as a first-class Hermes retrieval layer. Provides the knowledge_base_query tool and a semi-passive pre_llm_call hook that injects compact compiled-wiki context for durable Hermes/Knowledge Base/VPS/workspace questions. Retrieval is local-first: SQLite FTS/BM25 plus local embeddings route to safe compiled vault pages; raw sources remain audit-only."
+author: Hermes Agent
+hooks:
+  - pre_llm_call
+provides_hooks:
+  - pre_llm_call
+provides_tools:
+  - knowledge_base_query
