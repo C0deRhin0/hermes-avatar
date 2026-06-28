@@ -1,0 +1,36 @@
+# macOS filesystem metadata
+.DS_Store
+
+# Hermes credentials and machine-specific runtime state
+.hermes/.env
+.hermes/auth.json
+.hermes/**/*token*
+.hermes/**/*secret*
+.hermes/state.db*
+.hermes/*.db
+.hermes/logs/
+.hermes/sessions/
+.hermes/cache/
+.hermes/*cache*/
+.hermes/runtime/
+.hermes/pending/
+.hermes/state-snapshots/
+.hermes/sandboxes/
+.hermes/audio_cache/
+.hermes/image_cache/
+.hermes/lsp/
+.hermes/node/
+.hermes/hermes-agent/
+.hermes/bin/
+.hermes/profiles/
+.hermes/gateway.*
+.hermes/*.lock
+.hermes/*.pid
+.hermes/.update_check
+.hermes/.hermes_history
+.hermes/*.bak*
+
+# Local harness build/dependency output
+.opencode/node_modules/
+.opencode/dist/
+.opencode/local/
