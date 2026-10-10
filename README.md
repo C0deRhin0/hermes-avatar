@@ -4,6 +4,27 @@ Hermes Avatar is a portable, privacy-conscious configuration harness for a VPS-h
 
 It captures the durable operating model behind a practical, long-running agent: a local-first workspace, reusable skills, an operator SOUL, project-scoped OpenCode automation, and safeguards for handling privileged integrations without placing credentials or personal runtime state in source control.
 
+## Portable configuration, private runtime
+
+This repository carries an operating baseline. Rebuilding a deployment also requires the separately installed Hermes runtime and credentials supplied on the target host.
+
+```mermaid
+flowchart LR
+T["Portable config template"]:::source --> R["Review integrations<br/>and tool permissions"]:::review
+    S["SOUL · skills · plugins"]:::source --> R
+    R --> H["Hermes runtime<br/>trusted VPS"]:::process
+    P["Private credentials<br/>target host only"]:::store --> H
+    H --> G["Optional privacy gateway"]:::process
+    G --> L["Configured model provider"]:::result
+    classDef source fill:#e0f2fe,stroke:#0284c7,color:#0c4a6e
+    classDef process fill:#ede9fe,stroke:#7c3aed,color:#3b0764
+    classDef store fill:#dcfce7,stroke:#16a34a,color:#14532d
+    classDef review fill:#fef3c7,stroke:#d97706,color:#78350f
+    classDef result fill:#f1f5f9,stroke:#475569,color:#0f172a
+```
+
+Start with `.hermes/config.yaml.template` and `.hermes/SOUL.md`. Treat the bundled skills and scripts as configuration to review, not as an instruction to activate integrations or scheduled jobs.
+
 ## Operating goals
 
 - **Reproducible agent operations** — keep the operator instructions, skills, plugins, scripts, and configuration templates needed to rebuild a working Hermes environment.
@@ -39,7 +60,7 @@ Cron job state is also excluded: scheduled jobs can deliver external messages an
 ## Deployment posture
 
 1. Clone or copy this repository to a trusted VPS workspace.
-2. Review `codebase/.hermes/config.yaml.template`, then create a local `config.yaml` and replace placeholders using the target environment's secure secret store or `.env` file.
+2. Review `.hermes/config.yaml.template`, then create a local `config.yaml` and replace placeholders using the target environment's secure secret store or `.env` file.
 3. Add credentials interactively on the target host; do not copy them between machines or commit them.
 4. Review integrations, tool permissions, and messaging routes before starting the gateway.
 5. Use the project-local `.opencode/` harness for bounded codebase work.
